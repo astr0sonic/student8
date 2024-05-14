@@ -1,5 +1,6 @@
 #include <fstream>
-#include "bracket.h"
+#include <iomanip>
+#include "rpn.h"
 
 using namespace std;
 
@@ -10,11 +11,10 @@ int main(int argc, char** argv) {
     getline(in, expr);
     in.close();
 
-    bool isCorrect = checkBrackets(expr);
-    int result = isCorrect ? 1 : 0; 
+    double value = calculateRPN(expr); 
 
     ofstream out(argv[2]);
-    out << result << endl;
+    out << fixed << setprecision(3) << value << endl;
     out.close();
 
     return 0;
