@@ -53,11 +53,13 @@ std::string decompress(const std::vector<int>& compressed) {
     std::string decompressed = entry;
     std::string w=entry;
 
-    for (int i = 1; i < compressed.size() - 1; i++) {
+    for (int i = 1; i < compressed.size(); i++) {
         int currCode = compressed[i];
         if (dictionaryy.find(currCode) == dictionaryy.end()) {
             entry = dictionaryy[prevCode];
-            entry += entry[0];
+            if (!entry.empty()) { // Проверяем, не пустая ли строка
+                entry += entry[0]; 
+            }
         } else {
             entry = dictionaryy[currCode];
         }
