@@ -53,7 +53,7 @@ std::string decompress(const std::vector<int>& compressed) {
     std::string decompressed = entry;
     std::string w=entry;
 
-    for (int i = 1; i < compressed.size(); i++) {
+    for (int i = 1; i < compressed.size() - 1; i++) {
         int currCode = compressed[i];
         if (dictionaryy.find(currCode) == dictionaryy.end()) {
             entry = dictionaryy[prevCode];
